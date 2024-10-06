@@ -1,0 +1,107 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Add Schedule</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f3f0ff;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 20px auto;-->
+<!--            padding: 20px;-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+<!--        .form-container {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            gap: 20px;-->
+<!--        }-->
+<!--        .form-left, .form-right {-->
+<!--            flex: 1;-->
+<!--        }-->
+<!--        .form-left input, .form-right input, .form-left textarea {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            margin: 10px 0;-->
+<!--            border: 1px solid #d1d1e9;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin-bottom: 5px;-->
+<!--            color: #666;-->
+<!--        }-->
+<!--        .mode-of-communication {-->
+<!--            display: flex;-->
+<!--            gap: 10px;-->
+<!--            align-items: center;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        .button-container {-->
+<!--            display: flex;-->
+<!--            gap: 10px;-->
+<!--            justify-content: center;-->
+<!--        }-->
+<!--        .button-container button {-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            background-color: #6a4dc7;-->
+<!--            color: #fff;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--        .button-container button.cancel {-->
+<!--            background-color: #e74c3c;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h2>Add Schedule</h2>-->
+<!--    <form th:action="@{/schedule}" method="post" class="form-container">-->
+<!--        <div class="form-left">-->
+<!--            <label for="patientName">Patient Names</label>-->
+<!--            <input type="text" id="patientName" name="patientName" th:value="${schedule.patientName}" required>-->
+
+<!--            <label for="phoneNumber">Phone Number</label>-->
+<!--            <input type="text" id="phoneNumber" name="phoneNumber" th:value="${schedule.phoneNumber}" required>-->
+
+<!--            <label for="reason">Reason / Subject</label>-->
+<!--            <textarea id="reason" name="reason" rows="4" th:text="${schedule.reason}" required></textarea>-->
+
+<!--            <label for="scheduleDate">Date</label>-->
+<!--            <input type="date" id="scheduleDate" name="scheduleDate" th:value="${#dates.format(schedule.scheduleDate, 'yyyy-MM-dd')}" required>-->
+<!--        </div>-->
+<!--        <div class="form-right">-->
+<!--            <label for="scheduleTime">Time</label>-->
+<!--            <input type="time" id="scheduleTime" name="scheduleTime" th:value="${schedule.scheduleTime}" required>-->
+
+<!--            <label for="patientLocation">Patient Location</label>-->
+<!--            <input type="text" id="patientLocation" name="patientLocation" th:value="${schedule.patientLocation}" required>-->
+
+<!--            <div class="mode-of-communication">-->
+<!--                <label>Mode of communication:</label>-->
+<!--                <input type="radio" id="phoneCall" name="modeOfCommunication" value="phone call">-->
+<!--                <label for="phoneCall">Phone Call</label>-->
+<!--                <input type="radio" id="faceToFace" name="modeOfCommunication" value="face to face">-->
+<!--                <label for="faceToFace">Face to Face</label>-->
+<!--            </div>-->
+
+<!--            <div class="button-container">-->
+<!--                <button type="submit">Record Schedule</button>-->
+<!--                <button type="button" class="cancel" onclick="window.history.back();">Cancel</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->

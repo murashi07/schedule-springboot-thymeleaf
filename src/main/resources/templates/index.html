@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternity Care</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Optional: Link to external CSS file -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+        }
+        nav {
+            background-color: #6d83f2;
+            overflow: hidden;
+            padding: 5px 5px;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        nav img {
+            float: left;
+            margin-right: 20px;
+            width: 30px;
+            height: auto;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .hero {
+            padding: 20px;
+            background-color: #f0f4fa;
+            background-image: url('/imageProduct/img.png'); /* Add a background image relevant to maternity */
+            background-size: cover;
+            color: #333;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+        .content {
+            padding: 40px;
+            text-align: center;
+            background-color: white;
+        }
+        .content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+        .cta-button {
+            background-color: #6d83f2;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+        }
+        .cta-button:hover {
+            background-color: #5a70c8;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 40px;
+        }
+        footer img {
+            width: 50px;
+            vertical-align: middle;
+        }
+        footer a {
+            color: white;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #6d83f2;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <a class="navbar-brand" href="#">
+        <img th:src="@{/imageProduct/Screenshot (6222).png}" src="../static/imageProduct/Screenshot (6222).png" alt="Logo"/>
+    </a>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/#}">About Us</a>
+    <a th:href="@{/#}">Contact</a>
+    <a th:href="@{/thymeleaf/schedule}">Schedule</a>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Welcome to Maternity Care</h1>
+    <p>Your health and well-being, our priority</p>
+    <a href="#features" class="cta-button">Explore Our Services</a>
+</div>
+
+<!-- Main Content -->
+<div class="content" id="features">
+    <h2>Comprehensive Maternity Services</h2>
+    <p>From prenatal care to postnatal support, we provide everything you need for a safe and healthy journey into motherhood.</p>
+    <p>Our team of experts is here to guide you every step of the way.</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <img src="/images/logo.png" alt="Maternity Care Logo"> <!-- Replace with actual logo -->
+    <a href="https://www.twitter.com" target="_blank">Follow us on Twitter</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Schedule List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #28a745;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #218838;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+      transition: background-color 0.3s;
+    }
+
+    .actions a {
+      margin-right: 10px;
+      background-color: #007bff;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .actions a:hover {
+      background-color: #0056b3;
+    }
+
+    .delete {
+      background-color: #dc3545;
+    }
+
+    .delete:hover {
+      background-color: #c82333;
+    }
+
+    @media (max-width: 768px) {
+      table {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      th, td {
+        padding: 10px;
+      }
+
+      a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    tbody tr {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<!--<nav class="navbar navbar-expand-lg navbar-light fixed-top">-->
+<!--  <div class="container">-->
+<!--    <a class="navbar-brand" href="#">-->
+<!--      <img th:src="@{/images/logo2.jpg}" src="../static/images/logo2.jpg" alt="Logo"/>-->
+<!--    </a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--      <ul class="navbar-nav ml-auto">-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" th:href="@{/}" href="#">home</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" th:href="@{/#}" href="#">About Us</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" th:href="@{/#}" href="#">Contact</a>-->
+<!--        </li>-->
+
+
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" th:href="@{/#}" href="#">Service</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" th:href="@{/cart}" href="#">Schedule</a>-->
+<!--        </li>-->
+
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+
+<h1>Schedule List</h1>
+<a href="/thymeleaf/schedule/new">Add New Schedule</a>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Patient Name</th>
+    <th>Phone Number</th>
+    <th>Reason</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Location</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="schedule : ${schedules}">
+    <td th:text="${schedule.patientName}">Patient Name</td>
+    <td th:text="${schedule.phoneNumber}">Phone Number</td>
+    <td th:text="${schedule.reason}">Reason</td>
+    <td th:text="${#dates.format(schedule.scheduleDate, 'yyyy-MM-dd')}">Date</td>
+    <td th:text="${schedule.scheduleTime}">Time</td>
+    <td th:text="${schedule.patientLocation}">Location</td>
+    <td class="actions">
+      <a th:href="@{/thymeleaf/schedule/edit/{id}(id=${schedule.scheduleId})}">Edit</a>
+      <a class="delete" th:href="@{/thymeleaf/schedule/delete/{id}(id=${schedule.scheduleId})}"
+         onclick="return confirm('Are you sure?')">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

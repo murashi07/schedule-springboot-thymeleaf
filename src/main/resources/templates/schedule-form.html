@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${schedule.scheduleId != null ? 'Edit Schedule' : 'Add New Schedule'}">Schedule Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f0ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #6d83f2;
+      overflow: hidden;
+      padding: 5px 5px;
+    }
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    nav img {
+      float: left;
+      margin-right: 20px;
+      width: 50px;
+      height: auto;
+    }
+    .navbar-brand img {
+      height: 60px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .form-left, .form-right {
+      flex: 1;
+    }
+
+    .form-left input, .form-right input, .form-left textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #d1d1e9;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #666;
+    }
+
+    .mode-of-communication {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .button-container button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #6a4dc7;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .button-container button.cancel {
+      background-color: #e74c3c;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="navbar-brand" href="#">
+    <img th:src="@{/imageProduct/Screenshot (6222).png}" src="../static/imageProduct/Screenshot (6222).png" alt="Logo"/>
+  </a>
+  <a th:href="@{/}">Home</a>
+  <a th:href="@{/#}">About Us</a>
+  <a th:href="@{/#}">Contact</a>
+  <a th:href="@{/thymeleaf/schedule}">Schedule</a>
+</nav>
+
+<div class="container">
+  <h2 th:text="${schedule.scheduleId != null ? 'Edit Schedule' : 'Add New Schedule'}"></h2>
+  <form th:action="@{/thymeleaf/schedule}" th:object="${schedule}" method="post" class="form-container">
+    <div class="form-left">
+      <input type="hidden" th:if="${schedule.scheduleId != null}" th:field="*{scheduleId}"/>
+
+      <label for="patientName">Patient Name</label>
+      <input type="text" id="patientName" th:field="*{patientName}" placeholder="Patient Name" required>
+
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Phone Number" required>
+
+      <label for="reason">Reason / Subject</label>
+      <textarea id="reason" th:field="*{reason}" rows="4" placeholder="Reason" required></textarea>
+
+      <label for="scheduleDate">Date</label>
+      <input type="date" id="scheduleDate" th:field="*{scheduleDate}" required>
+    </div>
+
+    <div class="form-right">
+      <label for="scheduleTime">Time</label>
+      <input type="time" id="scheduleTime" th:field="*{scheduleTime}" required>
+
+      <label for="patientLocation">Location</label>
+      <input type="text" id="patientLocation" th:field="*{patientLocation}" placeholder="Location" required>
+
+      <div class="mode-of-communication">
+        <label>Mode of communication:</label>
+        <input type="radio" id="phoneCall" name="modeOfCommunication" value="phone call">
+        <label for="phoneCall">Phone Call</label>
+        <input type="radio" id="faceToFace" name="modeOfCommunication" value="face to face">
+        <label for="faceToFace">Face to Face</label>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" th:text="${schedule.scheduleId != null ? 'Update Schedule' : 'Record Schedule'}"></button>
+        <button type="button" class="cancel" onclick="window.history.back();">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
