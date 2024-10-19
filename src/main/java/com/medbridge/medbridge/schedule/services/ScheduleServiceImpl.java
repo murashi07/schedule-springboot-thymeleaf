@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ScheduleImpl implements ScheduleService{
-    private ScheduleRepository scheduleRepository;
+public class ScheduleServiceImpl implements ScheduleService{
+    private final ScheduleRepository scheduleRepository;
 
-    public ScheduleImpl(ScheduleRepository scheduleRepository) {
+    public ScheduleServiceImpl(ScheduleRepository scheduleRepository) {
         this.scheduleRepository = scheduleRepository;
     }
 
@@ -20,6 +20,7 @@ public class ScheduleImpl implements ScheduleService{
         scheduleRepository.save(schedule);
     }
 
+
     @Override
     public List<Schedule> findAllSchedule() {
         return scheduleRepository.findAll();
@@ -27,8 +28,10 @@ public class ScheduleImpl implements ScheduleService{
 
     @Override
     public Schedule getScheduleById(Long id) {
+
         return scheduleRepository.findById(id).orElse(null);
     }
+
 
 
     @Override

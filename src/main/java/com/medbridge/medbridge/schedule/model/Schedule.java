@@ -23,4 +23,6 @@ public class Schedule {
     private String scheduleTime;
     private String patientLocation;
 
+
+
 }
